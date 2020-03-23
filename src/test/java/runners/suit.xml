@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="MyLiFT" verbose="1">
+
+    <test name="MyLiF TLogin">
+        <parameter name="title" value="Manage Schools"/>
+        <parameter name="username" value="kevin.hytten@schoolhack.io"/>
+        <parameter name="password" value="schoolhack"/>
+        <parameter name="title2" value="that username and password"/>
+        <parameter name="password2" value="schoolhack23"/>
+        <classes>
+            <class name="tests.LoginTests" >
+
+            </class>
+        </classes>
+    </test>
+</suite>
