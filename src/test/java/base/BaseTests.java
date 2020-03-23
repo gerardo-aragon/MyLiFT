@@ -21,7 +21,7 @@ public class BaseTests {
         //Iniciamos Chrome con la pantalla maximizada
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
-        System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
         driver = new ChromeDriver(options);
 
         //Colocamos la url del sitio que queremos abrir
