@@ -5,8 +5,7 @@
         <parameter name="title" value="Manage Schools"/>
         <parameter name="username" value="kevin.hytten@schoolhack.io"/>
         <parameter name="password" value="schoolhack"/>
-        <parameter name="title2" value="that username and password"/>
-        <parameter name="password2" value="schoolhack23"/>
+        <parameter name="ValidationMessage" value="that username and password"/>
         <classes>
             <class name="tests.LoginTests" >
 

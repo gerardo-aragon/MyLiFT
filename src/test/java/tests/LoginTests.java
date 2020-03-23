@@ -9,6 +9,35 @@ import static org.testng.Assert.assertTrue;
 public class LoginTests extends BaseTests {
 
     @Test
+    @Parameters({"password", "ValidationMessage"})
+    public void loginEmptyUsername(String password, String ValidationMessage){
+        loginPage.setPasswordFieldField(password);
+        adminDashboardPage = loginPage.clickLoginButton();
+        assertTrue(loginPage.getValidation().contains(ValidationMessage),
+                "that username and password");
+
+    }
+
+    @Test
+    @Parameters({"username", "ValidationMessage"})
+    public void loginEmptyPassword(String username, String ValidationMessage){
+        loginPage.setUsernameField(username);
+        adminDashboardPage = loginPage.clickLoginButton();
+        assertTrue(loginPage.getValidation().contains(ValidationMessage),
+                "that username and password");
+
+    }
+
+    @Test
+    @Parameters({"ValidationMessage"})
+    public void LoginEmptyFields(String ValidationMessage){
+        adminDashboardPage = loginPage.clickLoginButton();
+        assertTrue(loginPage.getValidation().contains(ValidationMessage),
+                "that username and password");
+
+    }
+
+    @Test
     @Parameters({"username", "password", "title"})
     public void testSuccessfulLogin(String username, String password, String title){
         loginPage.setUsernameField(username);
@@ -16,17 +45,6 @@ public class LoginTests extends BaseTests {
         adminDashboardPage = loginPage.clickLoginButton();
         assertTrue(adminDashboardPage.getManageTittle().contains(title),
                 "Manage Schools");
-
-    }
-
-    @Test
-    @Parameters({"username", "password2", "title2"})
-    public void testSuccessfulLogin2(String username, String password2, String title2){
-        loginPage.setUsernameField(username);
-        loginPage.setPasswordFieldField(password2);
-        adminDashboardPage = loginPage.clickLoginButton();
-        assertTrue(loginPage.getValidation().contains(title2),
-                "that username and password");
 
     }
 
