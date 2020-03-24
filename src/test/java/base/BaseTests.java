@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.AdminDashboardPage;
 import pages.LoginPage;
+import pages.ResetPasswordPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,6 +16,7 @@ public class BaseTests {
     protected WebDriver driver;
     protected AdminDashboardPage adminDashboardPage;
     protected LoginPage loginPage;
+    protected ResetPasswordPage resetPasswordPage;
 
     @BeforeMethod
     public void setUp(){
@@ -30,6 +32,7 @@ public class BaseTests {
 
         adminDashboardPage = new AdminDashboardPage(driver);
         loginPage = new LoginPage(driver);
+        resetPasswordPage = new ResetPasswordPage(driver);
     }
 
     @AfterMethod

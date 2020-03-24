@@ -6,6 +6,7 @@
         <parameter name="username" value="kevin.hytten@schoolhack.io"/>
         <parameter name="password" value="schoolhack"/>
         <parameter name="ValidationMessage" value="that username and password"/>
+        <parameter name="ResetPasswordTitle" value="RESET YOUR"/>
         <classes>
             <class name="tests.LoginTests" >
 

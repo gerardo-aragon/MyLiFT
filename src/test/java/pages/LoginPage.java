@@ -22,6 +22,8 @@ public class LoginPage {
     private WebElement loginButton;
     @FindBy(how = How.XPATH, using = "/html/body/section[1]/div/p")
     private WebElement validationMessage;
+    @FindBy(how = How.XPATH, using = "/html/body/section/div[2]/div[2]/p/a")
+    private WebElement forgotPasswordLink;
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
@@ -48,6 +50,14 @@ public class LoginPage {
     public String getValidation(){
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/section[1]/div/p")));
         return validationMessage.getText();
+    }
+
+
+    public ResetPasswordPage clickForgotPasswordButton(){
+        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink));
+        forgotPasswordLink.click();
+        return new ResetPasswordPage(driver);
+
     }
 
 
