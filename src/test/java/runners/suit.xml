@@ -2,9 +2,11 @@
 <suite name="MyLiFT" verbose="1">
 
     <test name="MyLiF TLogin">
-        <parameter name="title" value="Manage Schools"/>
-        <parameter name="username" value="kevin.hytten@schoolhack.io"/>
-        <parameter name="password" value="schoolhack"/>
+        <parameter name="manageSchoolsTitle" value="Manage Schools"/>
+        <parameter name="adminUsername" value="kevin.hytten@schoolhack.io"/>
+        <parameter name="adminPassword" value="schoolhack"/>
+        <parameter name="teacherUsername" value="gerardo.aragon+tea01@edify.cr"/>
+        <parameter name="teacherPassword" value="sundayhundred26"/>
         <parameter name="ValidationMessage" value="that username and password"/>
         <parameter name="ResetPasswordTitle" value="RESET YOUR"/>
         <classes>

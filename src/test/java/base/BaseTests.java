@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import pages.AdminDashboardPage;
 import pages.LoginPage;
 import pages.ResetPasswordPage;
+import pages.TeacherDashboardPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +18,7 @@ public class BaseTests {
     protected AdminDashboardPage adminDashboardPage;
     protected LoginPage loginPage;
     protected ResetPasswordPage resetPasswordPage;
+    protected TeacherDashboardPage teacherDashboardPage;
 
     @BeforeMethod
     public void setUp(){
@@ -27,12 +29,13 @@ public class BaseTests {
         driver = new ChromeDriver(options);
 
         //Colocamos la url del sitio que queremos abrir
-        driver.get("https://demo.mylift.io/?locale=en");
+        driver.get("https://liftstaging.mylift.io/?locale=en");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         adminDashboardPage = new AdminDashboardPage(driver);
         loginPage = new LoginPage(driver);
         resetPasswordPage = new ResetPasswordPage(driver);
+        teacherDashboardPage = new TeacherDashboardPage(driver);
     }
 
     @AfterMethod

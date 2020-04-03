@@ -60,5 +60,11 @@ public class LoginPage {
 
     }
 
+    public TeacherDashboardPage teacherclickLoginButton(){
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+        loginButton.submit();
+        return new TeacherDashboardPage(driver);
+    }
+
 
 }
