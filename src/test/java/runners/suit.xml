@@ -1,7 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
 <suite name="MyLiFT" verbose="1">
+    <parameter name="enableTestLink" value="false" />
+    <parameter name="projectName" value="LiFT" />
+    <parameter name="testPlanName" value="TestLinkSelenium" />
+    <parameter name="platform" value="MacOS/Chrome" />
 
     <test name="MyLiF TLogin">
+        <parameter name="suiteName" value="Teacher" />
+        <parameter name="testCasePath" value="LiFT::Teacher::Login::" />
         <parameter name="manageSchoolsTitle" value="Manage Schools"/>
         <parameter name="adminUsername" value="kevin.hytten@schoolhack.io"/>
         <parameter name="adminPassword" value="schoolhack"/>
@@ -11,7 +18,13 @@
         <parameter name="ResetPasswordTitle" value="RESET YOUR"/>
         <classes>
             <class name="tests.LoginTests" >
-
+                <methods>
+                    <include name="teacherLoginEmptyUsername"></include>
+                    <include name="teacherLoginEmptyPassword"></include>
+                    <include name="teacherLoginEmptyFields"></include>
+                    <include name="teacherForgotPasswordAccess"></include>
+                    <include name="teacherSuccessfulLogin"></include>
+                </methods>
             </class>
         </classes>
     </test>

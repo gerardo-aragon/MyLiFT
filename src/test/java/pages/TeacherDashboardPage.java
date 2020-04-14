@@ -14,6 +14,7 @@ public class TeacherDashboardPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
+    //Xpath to obtain the LiFT icon on teacher's dashboard
     @FindBy(how = How.XPATH, using = "/html/body/div/div[1]/a/div")
     private WebElement LiFTLogo;
 
@@ -24,6 +25,7 @@ public class TeacherDashboardPage {
         PageFactory.initElements(driver,this);
     }
 
+    //Xpath to obtain the LiFT icon on teacher's dashboard
     public String getLiFTLogo(){
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div[1]/a/div")));
         return LiFTLogo.getText();
