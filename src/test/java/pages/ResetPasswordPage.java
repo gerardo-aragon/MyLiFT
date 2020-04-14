@@ -14,6 +14,7 @@ public class ResetPasswordPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
+    //Xpath for title on (RESET YOUR PASSWORD)
     @FindBy(how = How.XPATH, using = "/html/body/section/div/h2")
     private WebElement ResetPasswordTitle;
 
@@ -23,6 +24,7 @@ public class ResetPasswordPage {
         PageFactory.initElements(driver,this);
     }
 
+    //Method to obtain the title
     public String getResetPasswordTitle(){
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/section/div/h2")));
         return ResetPasswordTitle.getText();

@@ -1,16 +1,22 @@
 package base;
 
+import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import pages.AdminDashboardPage;
 import pages.LoginPage;
 import pages.ResetPasswordPage;
 import pages.TeacherDashboardPage;
 
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI;
+
 
 public class BaseTests {
 
@@ -20,8 +26,22 @@ public class BaseTests {
     protected ResetPasswordPage resetPasswordPage;
     protected TeacherDashboardPage teacherDashboardPage;
 
+    public Properties param;
+    public TestLink testLink;
+    public boolean testLinkEnabled;
+
+    @Parameters({"paramFile", "enableTestLink", "projectName", "testPlanName", "suiteName",
+            "testCasePath", "platform"})
+
     @BeforeMethod
-    public void setUp(){
+    public void setUp(
+            @Optional("") String paramFile,
+            @Optional("") boolean enableTestLink,
+            @Optional("") String projectName,
+            @Optional("") String testPlanName,
+            @Optional("") String suiteName,
+            @Optional("") String testCasePath,
+            @Optional("") String platform){
         //Iniciamos Chrome con la pantalla maximizada
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
@@ -36,6 +56,21 @@ public class BaseTests {
         loginPage = new LoginPage(driver);
         resetPasswordPage = new ResetPasswordPage(driver);
         teacherDashboardPage = new TeacherDashboardPage(driver);
+
+        testLinkEnabled = enableTestLink;
+        if(testLinkEnabled){
+            testLink = new TestLink(projectName, testPlanName);
+            testLink.setTestSuite(suiteName);
+            testLink.setTestCasePath(testCasePath);
+            testLink.setPlatform(platform);
+        }
+
+    }
+
+    public void updateTestLink(String testCaseName, ExecutionStatus status){
+        if (testLinkEnabled){
+            testLink.setTestCaseStatus(testCaseName, status);
+        }
     }
 
     @AfterMethod
