@@ -11,7 +11,7 @@ public class LoginTests extends BaseTests {
 
 
     //START OF TEACHER LOGIN
-    @Test(description = "LiFT-151 : Teacher can access LiFT when username textbox is empty")
+    @Test(description = "LiFT-151 : Teacher can't access LiFT when username textbox is empty")
     @Parameters({"teacherPassword", "ValidationMessage"})
     public void teacherLoginEmptyUsername(String teacherPassword, String ValidationMessage){
 
@@ -22,11 +22,11 @@ public class LoginTests extends BaseTests {
                     "that username and password");
 
             //Set the test case as passed
-            updateTestLink("Access lift when username textbox is empty", ExecutionStatus.PASSED);
+            updateTestLink("Teacher can't access LiFT when username textbox is empty", ExecutionStatus.PASSED);
 
         } catch (Exception | AssertionError e){
             //Set the test case as failed
-            updateTestLink("Access lift when username textbox is empty", ExecutionStatus.FAILED);
+            updateTestLink("Teacher can't access LiFT when username textbox is empty", ExecutionStatus.FAILED);
             throw e;
         }
 
@@ -105,11 +105,11 @@ public class LoginTests extends BaseTests {
             teacherDashboardPage = loginPage.teacherClickLoginButton(); //Click on login button
 
             //Set the test case as passed
-            updateTestLink("User can access lift with an existing email and password", ExecutionStatus.PASSED);
+            updateTestLink("Teacher can access LiFT with an existing email and password", ExecutionStatus.PASSED);
 
         } catch (Exception | AssertionError e){
             //Set the test case as failed
-            updateTestLink("User can access lift with an existing email and password", ExecutionStatus.FAILED);
+            updateTestLink("Teacher can access LiFT with an existing email and password", ExecutionStatus.FAILED);
             throw e;
 
         }
