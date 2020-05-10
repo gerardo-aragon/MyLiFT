@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="MyLiFT" verbose="1">
-    <parameter name="enableTestLink" value="true" />
+    <parameter name="enableTestLink" value="false" />
     <parameter name="projectName" value="LiFT" />
     <parameter name="testPlanName" value="TestLinkSelenium" />
     <parameter name="platform" value="MacOS/Chrome" />
@@ -13,9 +13,10 @@
         <parameter name="adminUsername" value="kevin.hytten@schoolhack.io"/>
         <parameter name="adminPassword" value="schoolhack"/>
         <parameter name="teacherUsername" value="gerardo.aragon+tea01@edify.cr"/>
-        <parameter name="teacherPassword" value="bikerunthree55"/>
-        <parameter name="ValidationMessage" value="that username and password"/>
+        <parameter name="teacherPassword" value="Test123*"/>
+        <parameter name="ValidationMessage" value="that username and"/>
         <parameter name="ResetPasswordTitle" value="RESET YOUR"/>
+        <parameter name="ProjectLibraryTextButton" value="Project Library"/>
         <classes>
             <class name="tests.LoginTests" >
                 <methods>

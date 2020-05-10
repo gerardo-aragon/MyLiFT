@@ -2,9 +2,11 @@ package tests;
 
 import base.BaseTests;
 import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
+import junit.awtui.Logo;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class LoginTests extends BaseTests {
@@ -19,7 +21,7 @@ public class LoginTests extends BaseTests {
             loginPage.setPasswordFieldField(teacherPassword); //Set teacher password on Login page
             adminDashboardPage = loginPage.clickLoginButton(); //Click on Login button
             assertTrue(loginPage.getValidation().contains(ValidationMessage), //Obtain message validation
-                    "that username and password");
+                    "El testcase teacherLoginEmptyUsername falló");
 
             //Set the test case as passed
             updateTestLink("Teacher can't access LiFT when username textbox is empty", ExecutionStatus.PASSED);
@@ -33,7 +35,7 @@ public class LoginTests extends BaseTests {
 
     }
 
-    @Test(description = "LiFT-152 : Teacher can access LiFT when password textbox is empty")
+    @Test(description = "LiFT-152 : Teacher can't access LiFT when password textbox is empty")
     @Parameters({"teacherUsername", "ValidationMessage"})
     public void teacherLoginEmptyPassword(String teacherUsername, String ValidationMessage){
 
@@ -41,35 +43,35 @@ public class LoginTests extends BaseTests {
             loginPage.setUsernameField(teacherUsername); //Set teacher username on Login page
             adminDashboardPage = loginPage.clickLoginButton(); //Click on login button
             assertTrue(loginPage.getValidation().contains(ValidationMessage), //Obtain message validation
-                    "that username and password");
+                    "El testcase teacherLoginEmptyUsername falló");
 
             //Set the test case as passed
-            updateTestLink("Access lift when password textbox is empty", ExecutionStatus.PASSED);
+            updateTestLink("Teacher can't access LiFT when password textbox is empty", ExecutionStatus.PASSED);
 
         } catch (Exception | AssertionError e){
             //Set the test case as failed
-            updateTestLink("Access lift when password textbox is empty", ExecutionStatus.FAILED);
+            updateTestLink("Teacher can't access LiFT when password textbox is empty", ExecutionStatus.FAILED);
             throw e;
         }
 
 
     }
 
-    @Test(description = "LiFT-153 : Teacher can access LiFT when clicking login button with no values")
+    @Test(description = "LiFT-153 : Teacher can't access LiFT when clicking login button with no values")
     @Parameters({"ValidationMessage"})
     public void teacherLoginEmptyFields(String ValidationMessage){
 
         try {
             adminDashboardPage = loginPage.clickLoginButton(); //Click on Login button
             assertTrue(loginPage.getValidation().contains(ValidationMessage), //Obtain message validation
-                    "that username and password");
+                    "El testcase teacherLoginEmptyUsername falló");
 
             //Set the test case as passed
-            updateTestLink("Access lift when clicking login button with no values", ExecutionStatus.PASSED);
+            updateTestLink("Teacher can't access LiFT when clicking login button with no values", ExecutionStatus.PASSED);
 
         } catch (Exception | AssertionError e){
             //Set the test case as failed
-            updateTestLink("Access lift when clicking login button with no values", ExecutionStatus.FAILED);
+            updateTestLink("Teacher can't access LiFT when clicking login button with no values", ExecutionStatus.FAILED);
             throw e;
         }
 
@@ -82,27 +84,29 @@ public class LoginTests extends BaseTests {
         try {
             resetPasswordPage = loginPage.clickForgotPasswordButton(); //Click on Forgot password link on Login page
             assertTrue(resetPasswordPage.getResetPasswordTitle().contains(ResetPasswordTitle),//Obtain message validation
-                    "RESET YOUR");
+                    "El testcase teacherForgotPasswordAccess falló");
 
             //Set the test case as passed
-            updateTestLink("Access to forgot password view", ExecutionStatus.PASSED);
+            updateTestLink("Teacher can access to forgot password view", ExecutionStatus.PASSED);
 
         } catch (Exception | AssertionError e){
             //Set the test case as failed
-            updateTestLink("Access to forgot password view", ExecutionStatus.FAILED);
+            updateTestLink("Teacher can access to forgot password view", ExecutionStatus.FAILED);
             throw e;
         }
 
     }
 
     @Test(description = "LiFT-156 : Teacher can access LiFT with an existing email and password.")
-    @Parameters({"teacherUsername", "teacherPassword"})
-    public void teacherSuccessfulLogin(String teacherUsername, String teacherPassword){
+    @Parameters({"teacherUsername", "teacherPassword", "ProjectLibraryTextButton"})
+    public void teacherSuccessfulLogin(String teacherUsername, String teacherPassword, String ProjectLibraryTextButton){
 
         try {
             loginPage.setUsernameField(teacherUsername); //Set teacher username on Login page
             loginPage.setPasswordFieldField(teacherPassword); //Set teacher password on Login page
             teacherDashboardPage = loginPage.teacherClickLoginButton(); //Click on login button
+            assertTrue(teacherDashboardPage.getLiFTLogo().contains(ProjectLibraryTextButton),
+                    "El testcase teacherSuccessfulLogin falló");
 
             //Set the test case as passed
             updateTestLink("Teacher can access LiFT with an existing email and password", ExecutionStatus.PASSED);
